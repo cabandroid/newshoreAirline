@@ -25,9 +25,9 @@ export class DataService {
    */
    private url: string = `${environment.API}/flights/`;
 
-  getUniqueDataFlights(): Observable<DataFlight>{
+  getUniqueDataFlights(): Observable<DataFlight[]>{
 
-    return this.http.get<DataFlight>(this.url + '0');
+    return this.http.get<DataFlight[]>(this.url + '0');
   }
 
 }

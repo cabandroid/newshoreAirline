@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter } from 'rxjs';
+import { DataFlight } from 'src/app/model/data-flight';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class DataComponent implements OnInit {
   origin: string = "";
   arrival: string = "";
   fligths!: any[];
+  datafligths?: DataFlight[];
 
   constructor(
     private dataService: DataService
@@ -27,6 +29,7 @@ export class DataComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.getUniqueDataFlights();
     this.onFormSubmit();
   }
 
@@ -34,38 +37,28 @@ export class DataComponent implements OnInit {
    * Suscripción al servicio
    * 
    */
-
    getUniqueDataFlights(){
-
     this.dataService.getUniqueDataFlights().subscribe(data => {
-      this.formUpperCase();
-      console.log("Origen: "+this.origin+", Destino: "+this.arrival);
       //----//
+      this.datafligths = data;
       console.log(data);
-
 
     });
 
    }
 
-   filterData(data: any){
-    return this.fligths.filter(function(element){
-      element.departureStation = data.origin;
-    })
-
-   }
    formUpperCase(){
     //Logica para pasar a Mayusculas el form
     this.origin = this.formData.get('departureStation')?.value;
     this.origin = this.origin.toUpperCase();
     this.arrival = this.formData.get('arrivalStation')?.value;
     this.arrival = this.arrival.toUpperCase();
+    console.log("Origen: "+this.origin+", Destino: "+this.arrival);
    }
 
    onFormSubmit(){
     
-    //console.log(this.formData.value);
-    this.getUniqueDataFlights();
+    this.formUpperCase();
       
    }
 

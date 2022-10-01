@@ -31,7 +31,7 @@
                         </span>
                         <h2 class="font-medium">Airline</h2>
                     </div>
-                    <div class="ml-auto text-blue-800">CO80001</div>
+                    <div class="ml-auto text-blue-800">{{ dataInput.flightCarrier }}-{{ dataInput.flightNumber }}</div>
                 </div>
                 <div class="border-b border-dashed border-b-2 my-5"></div>
                 <div class="flex items-center">
@@ -39,7 +39,7 @@
                         <div class="flex-auto text-xs text-gray-400 my-1">
                             <span class="mr-1 ">ORIGEN</span>
                         </div>
-                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">MZL</div>
+                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{ dataInput.departureStation }}</div>
 
                     </div>
                     <div class="flex flex-col mx-auto">
@@ -51,7 +51,7 @@
                         <div class="flex-auto text-xs text-gray-400 my-1">
                             <span class="mr-1">DESTINO</span>
                         </div>
-                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">MDE</div>
+                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{ dataInput.arrivalStation }}</div>
                     </div>
                 </div>
                 <div class="border-b border-dashed border-b-2 my-5 pt-5">
@@ -61,12 +61,12 @@
                 <div class="flex items-center mb-5 p-5 text-sm">
                     <div class="flex flex-col">
                         <span class="text-sm">Vuelo</span>
-                        <div class="font-semibold">CO</div>
+                        <div class="font-semibold">{{ dataInput.flightCarrier }}</div>
 
                     </div>
                     <div class="flex flex-col ml-auto">
                         <span class="text-sm">Número de vuelo</span>
-                        <div class="font-semibold">80001</div>
+                        <div class="font-semibold">{{ dataInput.flightNumber }}</div>
 
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="flex items-center px-5 pt-3 text-sm">
                     <div class="flex flex-col mx-auto">
                         <span class="mb-2">Price</span>
-                        <div class="font-semibold">{{ 2000 | currency: 'USD' | lowercase }}</div>
+                        <div class="font-semibold">{{ dataInput.price | currency: 'USD' | lowercase }}</div>
 
                     </div>
                 </div>
@@ -86,3 +86,4 @@
         </div>
     </div>
 </div>
+

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DataFlight } from 'src/app/model/data-flight';
 
 @Component({
   selector: 'app-flight',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight.component.css']
 })
 export class FlightComponent implements OnInit {
+
+  @Input() dataInput: any; 
 
   constructor() { }
 
