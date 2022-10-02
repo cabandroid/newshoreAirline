@@ -87,9 +87,12 @@
                 </div>
             </div>
         </div>
+        
     </section>
     <!-- Section: Design Block -->
     <app-flight [dataInput]="dataflight" *ngFor="let dataflight of datafligthsfound"></app-flight>
+    <!-- Card Not Found Flights-->
+    <app-not-flight *ngIf="flagCard == true"></app-not-flight>
 </div>
 <!-- Container for demo purpose -->
 
