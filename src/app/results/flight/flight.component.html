@@ -8,7 +8,7 @@
 </style>
 
 <div class="flex justify-center ">
-    <div class="bg-white relative drop-shadow-2xl  rounded-3xl p-4 m-4 w-5/12 ">
+    <div class="bg-white relative drop-shadow-2xl  rounded-3xl p-4 m-4 w-5/12">
         <div class="flex-none sm:flex">
             <div class=" relative h-32 w-32   sm:mb-0 mb-3 hidden">
                 <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg"
@@ -26,8 +26,7 @@
                 <div class="flex items-center justify-between">
                     <div class="flex items-center  my-1">
                         <span class="mr-3 rounded-full bg-white w-8 h-8">
-                            <img src="./assets/images/plane.png"
-                                class="h-8 p-1">
+                            <img src="./assets/images/plane.png" class="h-8 p-1">
                         </span>
                         <h2 class="font-medium">Airline</h2>
                     </div>
@@ -39,19 +38,20 @@
                         <div class="flex-auto text-xs text-gray-400 my-1">
                             <span class="mr-1 ">ORIGEN</span>
                         </div>
-                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{ dataInput.departureStation }}</div>
+                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{
+                            dataInput.departureStation }}</div>
 
                     </div>
                     <div class="flex flex-col mx-auto">
-                        <img src="./assets/images/plane.png"
-                            class="w-20 p-1">
+                        <img src="./assets/images/plane.png" class="w-20 p-1">
 
                     </div>
                     <div class="flex flex-col ">
                         <div class="flex-auto text-xs text-gray-400 my-1">
                             <span class="mr-1">DESTINO</span>
                         </div>
-                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{ dataInput.arrivalStation }}</div>
+                        <div class="w-full flex-none text-lg text-blue-800 font-bold leading-none">{{
+                            dataInput.arrivalStation }}</div>
                     </div>
                 </div>
                 <div class="border-b border-dashed border-b-2 my-5 pt-5">
@@ -70,7 +70,7 @@
 
                     </div>
                 </div>
-                
+
                 <div class="border-b border-dashed border-b-2 my-5 pt-5">
                     <div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -left-2"></div>
                     <div class="absolute rounded-full w-5 h-5 bg-blue-900 -mt-2 -right-2"></div>
@@ -78,12 +78,12 @@
                 <div class="flex items-center px-5 pt-3 text-sm">
                     <div class="flex flex-col mx-auto">
                         <span class="mb-2">Price</span>
-                        <div class="font-semibold">{{ dataInput.price | currency: 'USD' | lowercase }}</div>
+                        <div class="font-semibold">{{ dataInput.price | conversion }} {{ actCurrency }}</div>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
+</div>

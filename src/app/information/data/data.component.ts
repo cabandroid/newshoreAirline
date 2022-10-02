@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { filter } from 'rxjs';
 import { DataFlight } from 'src/app/model/data-flight';
+import { validationFields } from 'src/app/model/own-validations';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -14,8 +15,9 @@ export class DataComponent implements OnInit {
   formData: FormGroup;
   origin: string = "";
   arrival: string = "";
-  fligths!: any[];
   datafligths?: DataFlight[];
+  datafligthsfound?: DataFlight[];
+  fields_equals?: boolean = false;
 
   constructor(
     private dataService: DataService
@@ -24,12 +26,12 @@ export class DataComponent implements OnInit {
     this.formData = new FormGroup({
       departureStation: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
       arrivalStation: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)])
+    },{
+      validators: validationFields
     })
-
-   }
+  }
 
   ngOnInit(): void {
-    this.getUniqueDataFlights();
     this.onFormSubmit();
   }
 
@@ -37,30 +39,44 @@ export class DataComponent implements OnInit {
    * Suscripción al servicio
    * 
    */
-   getUniqueDataFlights(){
+  getUniqueDataFlights() {
     this.dataService.getUniqueDataFlights().subscribe(data => {
       //----//
       this.datafligths = data;
       console.log(data);
-
+      this.datafligths.forEach(element => {
+        //Logica con filter para agarrar el objeto que se busca
+            this.datafligthsfound = this.datafligths?.filter(found => found.departureStation === this.origin && found.arrivalStation === this.arrival);
+        
+      });
+      console.log(this.datafligthsfound);
     });
 
-   }
+  }
 
-   formUpperCase(){
+
+  formUpperCase() {
     //Logica para pasar a Mayusculas el form
     this.origin = this.formData.get('departureStation')?.value;
     this.origin = this.origin.toUpperCase();
     this.arrival = this.formData.get('arrivalStation')?.value;
     this.arrival = this.arrival.toUpperCase();
-    console.log("Origen: "+this.origin+", Destino: "+this.arrival);
-   }
+    console.log("Origen: " + this.origin + ", Destino: " + this.arrival);
+  }
 
-   onFormSubmit(){
+  setCurrency(current: string) {
+    localStorage.setItem('currency', current);
     
+  }
+
+  onFormSubmit() {
+
+    this.getUniqueDataFlights();
     this.formUpperCase();
-      
-   }
+
+  }
+
+
 
 
 }
